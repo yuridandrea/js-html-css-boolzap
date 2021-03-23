@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+  <link rel="stylesheet" href="css/style.css">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app" class="container-bg">
+    <div class="container-app">
+      <div class="container-sx">
+        <div class="sx-head">
+          <div class="user">
+            <img src="img/avatar_io.jpg" alt="">
+            <span>Nome Utente</span>
+          </div>
+          <div class="icons">
+            <i class="fas fa-circle-notch"></i>
+            <i class="fas fa-comment-alt"></i>
+            <i class="fas fa-ellipsis-v"></i>
+          </div>
+        </div>
+        <div class="sx-bell">
+          <div class="bell">
+          <i class="fas fa-bell-slash"></i>
+          </div>
+          <div class="bell-text">
+            <span class="big">Ricevi Notifiche di nuovi messaggi</span>
+            <span class="underline">Attiva notifiche desktop</span>
+          </div>
+        </div>
+        <div class="serch">
+          <div class="serch-bar">
+            <i class="fas fa-search"></i>
+            <input placeholder="Cerca o inizia una nuova chat"type="text">
+          </div>
+        </div>
+        <div class="chat-list">
+          <ul>
+            <li v-for="utente in contacts">{{utente.name}}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="container-dx">
+        <div class="dx-head">
+          <div class="user">
+            <img src="img/avatar_1.jpg" alt="">
+            <span>Michele <br> Ultimo accesso alle</span>
+            
+          </div>
+          <div class="icons">
+            <i class="fas fa-search"></i>
+            <i class="fas fa-comment-alt"></i>
+            <i class="fas fa-ellipsis-v"></i>
+          </div>
+        </div>
+        <div class="chat">
+          <div class="cont-chat">
+            <div  v-for="message in contacts.messages"class="green">
+              <div class="msg">
+                {text}}
+              </div>
+              <div class="date">
+                {{date}}
+              </div>
+            </div>
+          </div>
+          <div class="cont-chat">
+            <div class="grey">
+            
+            </div>
+          </div>
+          
+        </div>
+        <div class="message-imp">
+          <i class="far fa-smile"></i>
+          <input placeholder="Scrivi un messaggio" type="text">
+          <i class="fas fa-microphone"></i>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
+  <script src="js/main.js" charset="utf-8"></script>
+  
+</body>
+</html>
