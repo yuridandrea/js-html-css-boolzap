@@ -18,8 +18,8 @@
       <div class="container-sx">
         <div class="sx-head">
           <div class="user">
-            <img src="img/avatar_io.jpg" alt="">
-            <span>Nome Utente</span>
+            <img :src="'img/avatar' + user.avatar + '.jpg'" alt="">
+            <span>{{user.name}}</span>
           </div>
           <div class="icons">
             <i class="fas fa-circle-notch"></i>
@@ -42,17 +42,24 @@
             <input placeholder="Cerca o inizia una nuova chat"type="text">
           </div>
         </div>
-        <div class="chat-list">
-          <ul>
-            <li v-for="utente in contacts">{{utente.name}}</li>
-          </ul>
+        <div class="container-chat">
+          <div @click="selectedIndex = index" class="chat-list" v-for="(utente, index) in contacts">
+            <div  class="contacts-img">
+              <img :src="'img/avatar' + utente.avatar + '.jpg'" alt="">
+            </div>
+            <div class="contacts-info">
+              <span>{{utente.name}}</span>
+            </div>
+          </div>
         </div>
+        
       </div>
       <div class="container-dx">
         <div class="dx-head">
           <div class="user">
-            <img src="img/avatar_1.jpg" alt="">
-            <span>Michele <br> Ultimo accesso alle</span>
+            <img :src="'img/avatar' + contacts[selectedIndex].avatar + '.jpg'" alt="">
+
+            <span>{{contacts[selectedIndex].name}} <br> Ultimo accesso alle</span>
             
           </div>
           <div class="icons">
@@ -63,22 +70,18 @@
         </div>
         <div class="chat">
           <div class="cont-chat">
-            <div  v-for="message in contacts.messages"class="green">
-              <div class="msg">
-                {text}}
+              <div  v-for="(message, index) in contacts[selectedIndex].messages" :class="(message.status == 'sent') ? 'green' : 'grey' ">
+                <div class="msg">
+                  <span>{{message.text}}</span>
+                  <span class="data">{{message.date}}</span>
+                </div>
+              
               </div>
-              <div class="date">
-                {{date}}
-              </div>
-            </div>
           </div>
-          <div class="cont-chat">
-            <div class="grey">
-            
-            </div>
-          </div>
-          
         </div>
+        
+          
+       
         <div class="message-imp">
           <i class="far fa-smile"></i>
           <input placeholder="Scrivi un messaggio" type="text">

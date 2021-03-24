@@ -1,6 +1,12 @@
 var app = new Vue ({
   el:"#app",
   data: {
+    // sentMessage : "",
+    selectedIndex: 0,
+    user: {
+      name: "Yuri D'Andrea",
+      avatar: "_io"
+    },
     contacts: [
       {
         name: 'Michele',
