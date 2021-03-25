@@ -8,7 +8,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-
   <link rel="stylesheet" href="css/style.css">
   <title>Document</title>
 </head>
@@ -43,7 +42,7 @@
           </div>
         </div>
         <div class="container-chat">
-          <div @click="selectedIndex = index" class="chat-list" v-for="(utente, index) in contacts">
+          <div @click="selectedIndex = index" class="chat-list" v-for="(utente, index) in contacts" :class="(index === selectedIndex) ? 'active' : 'null' ">
             <div  class="contacts-img">
               <img :src="'img/avatar' + utente.avatar + '.jpg'" alt="">
             </div>
@@ -52,15 +51,12 @@
             </div>
           </div>
         </div>
-        
       </div>
       <div class="container-dx">
         <div class="dx-head">
           <div class="user">
             <img :src="'img/avatar' + contacts[selectedIndex].avatar + '.jpg'" alt="">
-
             <span>{{contacts[selectedIndex].name}} <br> Ultimo accesso alle</span>
-            
           </div>
           <div class="icons">
             <i class="fas fa-search"></i>
@@ -70,29 +66,26 @@
         </div>
         <div class="chat">
           <div class="cont-chat">
-              <div  v-for="(message, index) in contacts[selectedIndex].messages" :class="(message.status == 'sent') ? 'green' : 'grey' ">
-                <div class="msg">
-                  <span>{{message.text}}</span>
+              <div  v-for="(message, index) in contacts[selectedIndex].messages" class="msg">
+                <div :class="(message.status == 'sent') ? 'green' : 'grey' ">
+                  <span>{{message.text}}</span> <br>
                   <span class="data">{{message.date}}</span>
                 </div>
-              
+              </div>
+              <div v-for="(msg, ind) in listMessages" :class="(ind === selectedIndex) ? 'green' : 'none' " >
+                <span>{{msg}}</span> <br>
+                <span class="data">10/01/2020</span>
               </div>
           </div>
-        </div>
-        
-          
-       
+        </div>       
         <div class="message-imp">
           <i class="far fa-smile"></i>
-          <input placeholder="Scrivi un messaggio" type="text">
+          <input v-model="sentMessage" @keyUp.enter="sending" placeholder="Scrivi un messaggio" type="text">
           <i class="fas fa-microphone"></i>
         </div>
       </div>
     </div>
-    
   </div>
-  
-  <script src="js/main.js" charset="utf-8"></script>
-  
+  <script src="js/main.js" charset="utf-8"></script> 
 </body>
 </html>

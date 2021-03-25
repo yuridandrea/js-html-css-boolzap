@@ -1,7 +1,8 @@
 var app = new Vue ({
   el:"#app",
   data: {
-    // sentMessage : "",
+    sentMessage : "",
+    listMessages: [],
     selectedIndex: 0,
     user: {
       name: "Yuri D'Andrea",
@@ -93,4 +94,17 @@ var app = new Vue ({
       },
     ]
   },
+  methods: {
+    sending: function () {
+      if(this.sentMessage.trim()!= " ") {
+        this.listMessages.push(this.sentMessage);
+      }
+      this.sentMessage = ""
+    },
+    answerMessage: function () {
+      setInterval(() => {
+      return "ok"
+      }, 1000);
+    }
+  }
 });
