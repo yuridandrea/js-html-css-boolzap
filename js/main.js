@@ -2,8 +2,8 @@ var app = new Vue ({
   el:"#app",
   data: {
     sentMessage : "",
-    listMessages: [],
     selectedIndex: 0,
+    searchQuery: "",
     user: {
       name: "Yuri D'Andrea",
       avatar: "_io"
@@ -96,15 +96,44 @@ var app = new Vue ({
   },
   methods: {
     sending: function () {
+     let contactActive = this.contacts[this.selectedIndex]
       if(this.sentMessage.trim()!= " ") {
-        this.listMessages.push(this.sentMessage);
+        contactActive.messages.push(
+          {
+            date: dayjs().format('DD MM YYYY hh.mm'),
+            text: this.sentMessage,
+            status: 'sent'
+        }
+        )
       }
       this.sentMessage = ""
+
+      setTimeout(() => {
+        contactActive.messages.push(
+          {
+            date: dayjs().format('DD MM YYYY hh.mm'),
+            text: "ok",
+            status: "recived"
+          }
+        )
+      }, 1000);
     },
     answerMessage: function () {
       setInterval(() => {
       return "ok"
       }, 1000);
     }
-  }
+  },
+  // computed: {
+  //   search: function () {
+
+  //   }
+  //   serchContact () {
+  //     if (this.searchQuery) {
+  //       return this.contacts.filter((utente) => {
+  //         return utente.name.match(this.searchQuery)
+  //       })
+  //     }
+  //   }
+  // }
 });

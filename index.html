@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <link rel="stylesheet" href="css/style.css">
   <title>Document</title>
@@ -38,7 +39,7 @@
         <div class="serch">
           <div class="serch-bar">
             <i class="fas fa-search"></i>
-            <input placeholder="Cerca o inizia una nuova chat"type="text">
+            <input placeholder="Cerca o inizia una nuova chat" v-model="searchQuery" type="text">
           </div>
         </div>
         <div class="container-chat">
@@ -71,10 +72,6 @@
                   <span>{{message.text}}</span> <br>
                   <span class="data">{{message.date}}</span>
                 </div>
-              </div>
-              <div v-for="(msg, ind) in listMessages" :class="(ind === selectedIndex) ? 'green' : 'none' " >
-                <span>{{msg}}</span> <br>
-                <span class="data">10/01/2020</span>
               </div>
           </div>
         </div>       
