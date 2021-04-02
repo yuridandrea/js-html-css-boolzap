@@ -39,11 +39,11 @@
         <div class="serch">
           <div class="serch-bar">
             <i class="fas fa-search"></i>
-            <input placeholder="Cerca o inizia una nuova chat" v-model="searchQuery" type="text">
+            <input placeholder="Cerca o inizia una nuova chat" v-model="search" @keyUp="searchQuery" type="text">
           </div>
         </div>
         <div class="container-chat">
-          <div @click="selectedIndex = index" class="chat-list" v-for="(utente, index) in contacts" :class="(index === selectedIndex) ? 'active' : 'null' ">
+          <div @click="selectedIndex = index" class="chat-list" v-for="(utente, index) in contacts" :class="(index === selectedIndex) ? 'active' : 'null' " v-if="utente.visible">
             <div  class="contacts-img">
               <img :src="'img/avatar' + utente.avatar + '.jpg'" alt="">
             </div>

@@ -3,7 +3,7 @@ var app = new Vue ({
   data: {
     sentMessage : "",
     selectedIndex: 0,
-    searchQuery: "",
+    search: "",
     user: {
       name: "Yuri D'Andrea",
       avatar: "_io"
@@ -122,11 +122,22 @@ var app = new Vue ({
       setInterval(() => {
       return "ok"
       }, 1000);
+    },
+    searchQuery() {
+      let self = this;
+      this.contacts.forEach((element) => {
+        if (element.name.toLowerCase().includes(self.search.toLowerCase())) {
+          element.visible = true;
+        }
+        else {
+          element.visible = false;
+        }
+      });
     }
-  },
-  // computed: {
-  //   search: function () {
 
+  },
+
+    
   //   }
   //   serchContact () {
   //     if (this.searchQuery) {
@@ -135,5 +146,5 @@ var app = new Vue ({
   //       })
   //     }
   //   }
-  // }
+  
 });
